@@ -2,3 +2,7 @@ name: acms
 recipe: drupal9
 config:
   webroot: docroot
+tooling:
+  blt:
+    service: appserver
+    cmd: vendor/bin/blt

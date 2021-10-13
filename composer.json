@@ -20,6 +20,7 @@
     "php": "^7.3",
     "acquia/acquia_cms": "^1.0",
     "acquia/blt": "^13.1",
+    "acquia/blt-site-studio": "9999999-dev",
     "acquia/drupal-environment-detector": "^1",
     "acquia/memcache-settings": "^1",
     "cweagans/composer-patches": "^1.6.0",
@@ -89,6 +90,11 @@
     "assets": {
       "type": "composer",
       "url": "https://asset-packagist.org"
+    },
+    "blt-site-studio": {
+     "type": "vcs",
+     "url": "https://github.com/davidtrainer/blt-site-studio.git",
+     "no-api": true
     }
   },
   "minimum-stability": "dev",

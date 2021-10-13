@@ -1,2 +1,6 @@
 project:
   machine_name: app
+  profile:
+    name: acquia_cms
+  prefix: ACMS
+  local: {  }
