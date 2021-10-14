@@ -19,7 +19,7 @@ To build sites with Acquia CMS, you need entitlements to the following products:
 1. And [Acquia Cloud](https://docs.acquia.com/guide/cloud-ace/) or [Site Factory](https://docs.acquia.com/site-factory/) hosting environemnt.
 1. [Acquia Site Studio](https://docs.acquia.com/site-studio/).
 
-# Local Setup with Lando
+# Getting Started (Local Setup with Lando).
 1. Create Project:
 ```
 composer create-project acquia/acquia-cms-project <project-name>
@@ -141,22 +141,6 @@ SITESTUDIO_ORG_KEY=bar
     ```
   1. If 2 GB *still* isn't enough memory, try raising the limit even more.
   1. *Note:* If you install Acquia CMS with the drush `site:install` command, Site Studio assets will need to be rebuilt by running `drush cohesion:rebuild` after ACMS is installed. The composer `acms:install` command described above does this for you.
-
-# Getting Started (Local).
-
-1. Acquia CMS can be hosted inside any local development environment capable of hosting a Drupal 9 site. You will need to have Composer installed locally, and we highly recommend using Composer 2.
-1. Run `composer create-project acquia/acquia-cms-project`.
-1. Run `composer install`. If you receive out of memory errors, try `php -d memory_limit=2G /usr/local/bin/composer install`.
-1. Then follow the Drupal configuration instructions for the development environment of your choice. For most environments, this means adding database credentials to settings.php. Drupal and ACMS will auto-create a settings.php file for you, but ACMS has no knowledge of credential configuration for any non-Acquia environments.
-1. Once configured, run `composer acms:install`.
-1. It can take a lot of memory to install Acquia CMS. If you run into memory errors, try increasing the memory limit when installing Acquia CMS:
-```
-php -d memory_limit=2G vendor/bin/drush site:install acquia_cms --yes --account-pass admin
-```
-If 2 GB *still* isn't enough memory, try raising the limit even more.
-1. If you see blank pages with no styles being loaded after installing, you likely just need to run a cohesion rebuild via `drush cohesion:rebuild`.
-
-*Note:* If you install Acquia CMS with the drush `site:install` command, Site Studio assets will need to be manually imported by running `drush cohesion:rebuild` after ACMS is installed. The composer `acms:install` command described above does this for you.
 
 # Contributing to Acquia CMS
 
