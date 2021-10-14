@@ -1,4 +1,4 @@
-# Acquia CMS Composer Template
+# Acquia CMS Template with Lando and BLT
 
 Acquia CMS is an opinionated implementation of Drupal 9 tailored for creating full-featured websites with low or no code required.
 
@@ -6,9 +6,11 @@ This repository is a Composer template for the Acquia CMS distribution. For supp
 
 # Environment Requirements
 
-1. PHP 7.3
-1. MySQL 5.7 or MariaDB 10.3.7
-1. Composer >= 1.9.2
+1. PHP 7.4
+2. MySQL 5.7 or MariaDB 10.3.7
+3. Composer >= 2
+4. Lando >= 3.1
+5. BLT >= 13
 
 # Prerequisites
 
@@ -16,6 +18,79 @@ To build sites with Acquia CMS, you need entitlements to the following products:
 1. [Acquia Cloud IDE](https://docs.acquia.com/ide/).
 1. And [Acquia Cloud](https://docs.acquia.com/guide/cloud-ace/) or [Site Factory](https://docs.acquia.com/site-factory/) hosting environemnt.
 1. [Acquia Site Studio](https://docs.acquia.com/site-studio/).
+
+# Local Setup with Lando
+1. Create Project:
+```
+composer create-project acquia/acquia-cms-project <project-name>
+```
+2. Got to Project directory
+```
+cd <project-name>
+```
+3. Initialize lando
+```
+lando init --source cwd --recipe drupal9 --webroot docroot --name <appname>
+```
+4. Start Lando
+```
+lando start
+```
+5. Run composer install command to add all the dependencies.
+```
+lando composer install
+```
+6. Add BLT package
+```
+lando composer require acquia/blt
+```
+7. Add BLT Site studio plugin
+First add below lines under repository in composer.json
+```
+"blt-site-studio": {
+     "type": "vcs",
+     "url": "https://github.com/davidtrainer/blt-site-studio.git",
+     "no-api": true
+ }
+```
+After that run composer command to add the plugin
+```
+lando composer req acquia/blt-site-studio
+```
+9. Configure lando: Add following lines in the .lando.yml file. It will enable blt command for lando.
+```
+tooling:
+  blt:
+    service: appserver
+    cmd: vendor/bin/blt
+```
+10. Rebuild Lando
+```
+lando rebuild
+```
+11. Configure BLT: Upatde blt.yml file with profile details
+```
+project:
+ profile:
+   name: custom_acquia_cms
+```
+12. Check DB connection details in local.settings.php:
+```
+drupal:
+ db:	
+   database: drupal9
+   username: drupal9
+   password: drupal9
+   host: database
+```
+13. Install Drupal with Site studio
+```
+blt setup
+```
+or
+```
+composer acms:install
+```
 
 ## Optional setup step: Pre-configure your Site Studio API keys
 
