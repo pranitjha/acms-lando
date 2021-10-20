@@ -42,7 +42,7 @@ lando composer install
 ```
 6. Add BLT package
 ```
-lando composer require acquia/blt
+lando composer require acquia/blt --with-dependencies
 ```
 7. Add BLT Site studio plugin
 First add below lines under repository in composer.json
