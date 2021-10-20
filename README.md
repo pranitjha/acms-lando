@@ -68,7 +68,7 @@ tooling:
 ```
 lando rebuild
 ```
-11. Configure BLT: Upatde blt/blt.yml file with profile details
+11. Configure BLT: Update blt/blt.yml file with profile details
 ```
 project:
  profile:
