@@ -68,13 +68,13 @@ tooling:
 ```
 lando rebuild
 ```
-11. Configure BLT: Upatde blt.yml file with profile details
+11. Configure BLT: Upatde blt/blt.yml file with profile details
 ```
 project:
  profile:
    name: custom_acquia_cms
 ```
-12. Check DB connection details in local.settings.php:
+12. Check DB connection details in docroot/sites/default/settings/local.settings.php:
 ```
 drupal:
  db:	
@@ -85,7 +85,7 @@ drupal:
 ```
 13. Install Drupal with Site studio
 ```
-blt setup
+lando blt setup
 ```
 or
 ```
@@ -111,8 +111,11 @@ To save time and resources, Acquia CMS does not import any templates from Site S
 **Site Studio variables example:**
 
 ```
-SITESTUDIO_API_KEY=foo
-SITESTUDIO_ORG_KEY=bar
+// Site Studio Settings.
+$config['cohesion.settings']['api_key'] = 'foo';
+$config['cohesion.settings']['organization_key'] = 'bar';
+// Hide the fields from the settings form.
+$settings['dx8_no_api_keys'] = TRUE;
 ```
 
 # Getting Started (Cloud IDE).
